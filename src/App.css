@@ -21,13 +21,26 @@
 .App-intro {
     font-size: large;
 }
+.cardstyle {
+  width:80%;
+  padding-left: 10%;
+  background-color: "blue";
+  padding-top: 100px;
 
+}
 .todo-form {
     border: 1px solid lightsteelblue;
     margin: auto;
     width: 60%;
     padding: 20px;
     text-align: center;
+
+}
+.todo-date{
+  input{
+    padding: 20px !important;
+    color:"blue";
+  }
 }
 
 .left {

@@ -4,8 +4,16 @@ import {TodoList} from "./TodoList";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from "moment";
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
 
-class TodoApp extends Component {
+
+export class TodoApp extends React.Component {
 
     constructor(props) {
             super(props);
@@ -17,47 +25,68 @@ class TodoApp extends Component {
         }
 
     render() {
-
       return (
-        <div>
-            <form onSubmit={this.handleSubmit} className="todo-form">
-                <h3>New TODO</h3>
-                <label htmlFor="text" className="right-margin">
-                    Text:
-                </label>
+        <div >
+        <div className="cardstyle">
+          <Card >
+              <h3>New TODO</h3>
+              <img src={require('../img/tarea.jpg')} />
+              <CardContent>
+                <form onSubmit={this.handleSubmit} className="todoApp">
 
-                <input
-                    id="text"
-                    onChange={this.handleTextChange}
-                    value={this.state.text}>
-                </input>
 
-                <br/>
-                <br/>
-                <label htmlFor="priority" className="right-margin">
-                    Priority:
-                </label>
+                    <TextField
+                      id="text"
+                      label="Text"
+                      value={this.state.text}
+                      onChange={this.handleTextChange}
+                      margin="normal"
+                      variant="outlined"
+                    />
 
-                <input
-                    id="priority"
-                    type="number"
-                    onChange={this.handlePriorityChange}
-                    value={this.state.priority}>
-                </input>
-                <br/>
-                <br/>
 
-                <DatePicker
-                    id="due-date"
-                    selected={this.state.dueDate}
-                    placeholderText="Due date"
-                    onChange={this.handleDateChange}>
-                </DatePicker>
-                <br/>
-                <button>
-                    Add #{this.state.items.length + 1}
-                </button>
-            </form>
+                    <br/>
+                    <br/>
+
+                    <TextField
+                      id="priority"
+                      type="number"
+                      label="Priority"
+                      value={this.state.priority}
+                      onChange={this.handlePriorityChange}
+                      margin="normal"
+                      variant="outlined"
+                    />
+
+                    <br/>
+                    <br/>
+
+                    <div className="datepicker">
+                      <p>Date</p>
+                      <DatePicker
+                          id="due-date"
+                          selected={this.state.dueDate}
+                          placeholderText="Due date"
+                          single-line
+                          onChange={this.handleDateChange}
+                          outline
+                          >
+                      </DatePicker>
+                    </div>
+                    <br/>
+                    <Button  variant="contained" color="primary" type="submit">
+                      Add #{this.state.items.length + 1 }
+
+                   </Button>
+                </form>
+              </CardContent>
+
+            <CardActions>
+
+            </CardActions>
+          </Card>
+        </div>
+
             <br/>
             <br/>
             <TodoList todoList={this.state.items}/>
@@ -105,6 +134,3 @@ class TodoApp extends Component {
 
 
       }
-      export default TodoApp;
-
-
